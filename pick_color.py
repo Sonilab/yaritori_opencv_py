@@ -8,7 +8,7 @@ import colorsys
 cv2_img = cv2.imread('test.jpg')
 
 #set analyzing size
-resize_width = 400
+resize_width = 150
 img_height,img_width,_ = cv2_img.shape
 resize_height = resize_width / img_width * img_height
 
@@ -21,7 +21,7 @@ cv2_img = cv2_img.reshape(
     (cv2_img.shape[0] * cv2_img.shape[1], 3))
 cv2_img.shape
 
-cluster = KMeans(n_clusters=5)
+cluster = KMeans(n_clusters=3)
 cluster.fit(X=cv2_img)
 cluster.cluster_centers_
 
@@ -29,9 +29,9 @@ cluster.cluster_centers_
 main_rgb_color = cluster.cluster_centers_
 
 #hsv(0.0-1.0, 0.0-1.0, 0.0-1.0)
-hsv_color = [[], [], [], []]
+hsv_color = [[], [], []]
 
-for i in range(4):
+for i in range(3):
      hsv_color[i] = colorsys.rgb_to_hsv(main_rgb_color[i][0] / 255.0, main_rgb_color[i][1] / 255.0, main_rgb_color[i][2] / 255.0)
 
 #hsv(0.0-1.0, 0.0-1.0, 0.0-1.0)
